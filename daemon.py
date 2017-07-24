@@ -68,7 +68,7 @@ class HTTPHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/plain")
         self.end_headers()
-        self.wfile.write("\n".join(content))
+        self.wfile.write(("\n".join(content)) + "\n")
 
 
 port = int(os.getenv("PORT") or 29456)
