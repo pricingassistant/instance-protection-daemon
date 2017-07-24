@@ -22,7 +22,7 @@ PROTECTED_IDS = set()
 def set_protection():
     print "Setting protection"
     for _ in range(12):
-        out = subprocess.check_output("aws autoscaling set-instance-protection --instance-ids \"" + INSTANCE_ID + "\" --auto-scaling-group-name \"" + ASG_NAME + "\" --protected-from-scale-in")
+        out = subprocess.check_output("aws autoscaling set-instance-protection --instance-ids \"" + INSTANCE_ID + "\" --auto-scaling-group-name \"" + ASG_NAME + "\" --protected-from-scale-in", shell=True, env=os.environ)
 
         # The instance may still be starting up? Wait a bit more.
         if "is not in InService " in out:
